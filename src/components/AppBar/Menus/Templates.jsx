@@ -11,7 +11,7 @@ import ContentPaste from '@mui/icons-material/ContentPaste'
 import Typography from '@mui/material/Typography'
 import { ExpandMore } from '@mui/icons-material'
 
-export default function Workspace() {
+export default function Templates() {
   const [anchorEl, setAnchorEl] = useState(null)
 
   const open = Boolean(anchorEl)
@@ -24,23 +24,23 @@ export default function Workspace() {
   return (
     <Box>
       <Button
-        id="basic-button-workspace"
-        aria-controls={open ? 'basic-menu-workspace' : undefined}
+        id="basic-button-template"
+        aria-controls={open ? 'basic-menu-template' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         sx={{ color: 'text.secondary' }}
         endIcon={<ExpandMore />}
       >
-        Workspaces
+        Templates
       </Button>
       <Menu
-        id="basic-menu-workspace"
+        id="basic-menu-template"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button-workspace'
+          'aria-labelledby': 'basic-button-template'
         }}
       >
         <MenuItem>
