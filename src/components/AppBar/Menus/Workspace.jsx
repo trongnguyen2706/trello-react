@@ -15,7 +15,7 @@ export default function Workspace() {
   const [anchorEl, setAnchorEl] = useState(null)
 
   const open = Boolean(anchorEl)
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget)
   }
   const handleClose = () => {
@@ -24,9 +24,9 @@ export default function Workspace() {
   return (
     <Box>
       <Button
-        id="basic-button-workspace"
+        id='basic-button-workspace'
         aria-controls={open ? 'basic-menu-workspace' : undefined}
-        aria-haspopup="true"
+        aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         sx={{ color: 'text.secondary' }}
@@ -35,7 +35,7 @@ export default function Workspace() {
         Workspaces
       </Button>
       <Menu
-        id="basic-menu-workspace"
+        id='basic-menu-workspace'
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -45,28 +45,28 @@ export default function Workspace() {
       >
         <MenuItem>
           <ListItemIcon>
-            <ContentCut fontSize="small" />
+            <ContentCut fontSize='small' />
           </ListItemIcon>
           <ListItemText>Cut</ListItemText>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant='body2' color='text.secondary'>
             ⌘X
           </Typography>
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <ContentCopy fontSize="small" />
+            <ContentCopy fontSize='small' />
           </ListItemIcon>
           <ListItemText>Copy</ListItemText>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant='body2' color='text.secondary'>
             ⌘C
           </Typography>
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-            <ContentPaste fontSize="small" />
+            <ContentPaste fontSize='small' />
           </ListItemIcon>
           <ListItemText>Paste</ListItemText>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant='body2' color='text.secondary'>
             ⌘V
           </Typography>
         </MenuItem>

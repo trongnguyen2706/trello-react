@@ -1,5 +1,6 @@
 import { Box, Container } from '@mui/material'
 import AppBar from '@/components/AppBar'
+import BoardBar from './BoardBar'
 export default function Board() {
   return (
     <>
@@ -9,17 +10,7 @@ export default function Board() {
         sx={{ height: '100vh', backgroundColor: 'primary.main' }}
       >
         <AppBar />
-        <Box
-          sx={{
-            backgroundColor: 'primary.dark',
-            width: '100%',
-            height: theme => theme.trello.boardBarHeight,
-            display: 'flex',
-            justifyItems: 'center'
-          }}
-        >
-          Board Bar
-        </Box>
+        <BoardBar />
         <Box
           sx={{
             backgroundColor: 'primary.main',
