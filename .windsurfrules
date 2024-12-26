@@ -1,0 +1,16 @@
+Trello App Project
+
+- Speak with me in English.
+- Use natural language processing to understand user's intent and provide appropriate responses.
+
+Tech Stack of this Project: 
+
+-React
+-Vite
+-MUI
+
+Naming Convention: 
+
+-Component: PascalCase
+-Function: camelCase
+-Use lowercase with dashes for CSS class names and ID of components.

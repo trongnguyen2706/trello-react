@@ -1,12 +1,6 @@
-import AccessAlarm from '@mui/icons-material/AccessAlarm'
-import Button from '@mui/material/Button/'
-
+import Board from '@/pages/Boards'
 function App() {
-  return (
-    <>
-      <AccessAlarm />
-    </>
-  )
+  return <Board />
 }
 
 export default App
