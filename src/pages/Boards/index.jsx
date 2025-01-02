@@ -1,6 +1,8 @@
-import { Box, Container } from '@mui/material'
-import AppBar from '@/components/AppBar'
-import BoardBar from './BoardBar'
+import { Container } from '@mui/material'
+import AppBar from '@/components/AppBar/AppBar'
+import BoardBar from './BoardBar/BoardBar'
+import BoardContent from './BoardContent'
+import { mockData } from '@/apis/mock-data'
 export default function Board() {
   return (
     <>
@@ -10,19 +12,8 @@ export default function Board() {
         sx={{ height: '100vh', backgroundColor: 'primary.main' }}
       >
         <AppBar />
-        <BoardBar />
-        <Box
-          sx={{
-            backgroundColor: 'primary.main',
-            width: '100%',
-            height: theme =>
-              `calc(100vh - ${theme.trello.appBarHeight} - ${theme.trello.boardBarHeight})`,
-            display: 'flex',
-            justifyItems: 'center'
-          }}
-        >
-          Content
-        </Box>
+        <BoardBar board={mockData?.board} />
+        <BoardContent board={mockData?.board} />
       </Container>
     </>
   )

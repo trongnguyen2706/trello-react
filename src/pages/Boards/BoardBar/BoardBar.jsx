@@ -5,6 +5,7 @@ import AddToDriveIcon from '@mui/icons-material/AddToDrive'
 import BoltIcon from '@mui/icons-material/Bolt'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
+import { capitalizeFirstLetter } from '@/utils/formatters'
 const MENU_STYLES = {
   color: 'text.secondary',
   bgcolor: 'transparent',
@@ -18,7 +19,7 @@ const MENU_STYLES = {
     bgcolor: 'primary.50'
   }
 }
-export default function BoardBar() {
+export default function BoardBar({ board }) {
   return (
     <Box
       sx={{
@@ -38,19 +39,19 @@ export default function BoardBar() {
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Chip
           icon={<DashboardIcon />}
-          label='Testing'
+          label={board?.title}
           clickable
           sx={MENU_STYLES}
         />
         <Chip
           icon={<VPNLockIcon />}
-          label='Public projects'
+          label={capitalizeFirstLetter(board?.type)}
           clickable
           sx={MENU_STYLES}
         />
         <Chip
           icon={<AddToDriveIcon />}
-          label='Add to drive project'
+          label={'Add to Drive'}
           clickable
           sx={MENU_STYLES}
         />
@@ -86,7 +87,13 @@ export default function BoardBar() {
           sx={{
             '& .MuiAvatar-root': {
               width: 32,
-              height: 32
+              height: 32,
+              border: 'none',
+              color: 'text.secondary',
+              cursor: 'pointer',
+              '&:first-of-type': {
+                bgcolor: '#a4b0be'
+              }
             }
           }}
         >

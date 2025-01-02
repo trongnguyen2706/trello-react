@@ -14,3 +14,11 @@ Naming Convention:
 -Component: PascalCase
 -Function: camelCase
 -Use lowercase with dashes for CSS class names and ID of components.
+
+Convention when create a suggest commit message:
+
+- Feature: [featureName]
+- Bug: [bugName]
+- Refactor: [refactorName] 
+Start with : 'feat' if you are working on a new feature.
+Start with : 'fix' if you are working on a bug.
