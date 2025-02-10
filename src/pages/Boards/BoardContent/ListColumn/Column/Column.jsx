@@ -18,9 +18,17 @@ import ContentPaste from '@mui/icons-material/ContentPaste'
 import ContentCopy from '@mui/icons-material/ContentCopy'
 import Tooltip from '@mui/material/Tooltip'
 import ListCards from './ListCards/ListCards'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 function Column({ column }) {
   const [anchorEl, setAnchorEl] = useState(null)
-
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: column._id, data: { ...column } })
+  const dndKitColumnStyles = {
+    touchAction: 'none',
+    transform: CSS.Translate.toString(transform),
+    transition
+  }
   const open = Boolean(anchorEl)
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
@@ -41,6 +49,10 @@ function Column({ column }) {
         maxHeight: theme =>
           `calc(${theme.trello.boardContentHeight} - ${theme.spacing(5)})`
       }}
+      ref={setNodeRef}
+      style={dndKitColumnStyles}
+      {...attributes}
+      {...listeners}
     >
       <Box
         sx={{
