@@ -1,32 +1,36 @@
 import { Box } from '@mui/material'
 
 import CardBlock from './Card/Card.jsx'
-
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 function ListCards({ cards }) {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        p: '0 5px',
-        m: '0 5px',
-        overflowY: 'auto',
-        overflowX: 'hidden',
-        maxHeight: theme =>
-          `calc(${theme.trello.boardContentHeight} - ${theme.spacing(5)} - ${theme.trello.columnHeaderHeight} - ${theme.trello.columnFooterHeight})`,
-        '&::-webkit-scrollbar-thumb': {
-          backgroundColor: '#ced0da'
-        },
-        '&::-webkit-scrollbar-thumb:hover': {
-          backgroundColor: '#74b9ff'
-        }
-      }}
+    <SortableContext
+      items={cards?.map(card => card._id)}
+      strategy={verticalListSortingStrategy}
     >
-      {cards?.map(card => (
-        <CardBlock key={card._id} card={card} />
-      ))}
-      {/* <Card
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          p: '0 5px',
+          m: '0 5px',
+          overflowY: 'auto',
+          overflowX: 'hidden',
+          maxHeight: theme =>
+            `calc(${theme.trello.boardContentHeight} - ${theme.spacing(5)} - ${theme.trello.columnHeaderHeight} - ${theme.trello.columnFooterHeight})`,
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#ced0da'
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            backgroundColor: '#74b9ff'
+          }
+        }}
+      >
+        {cards?.map(card => (
+          <CardBlock key={card._id} card={card} />
+        ))}
+        {/* <Card
       sx={{
         maxWidth: 345,
         cursor: 'pointer',
@@ -40,7 +44,8 @@ function ListCards({ cards }) {
         </CardContent>
       </CardActionArea>
     </Card> */}
-    </Box>
+      </Box>
+    </SortableContext>
   )
 }
 
