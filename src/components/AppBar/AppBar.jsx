@@ -1,4 +1,4 @@
-import { ModeSelect } from '@/components/ModeSelect/index'
+import { ModeSelect } from '@/components/ModeSelect/ModeSelect'
 import {
   Box,
   SvgIcon,
