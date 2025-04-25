@@ -46,7 +46,7 @@ export default function BoardContent({ board }) {
   const [oldColumnWhenDraggingCard, setOldColumnWhenDraggingCard] =
     useState(null)
   useEffect(() => {
-    setOrderedColumn(mapOrder(board?.columns, board?.columnOrderIds, '_id'))
+    // setOrderedColumn(mapOrder(board?.columns, board?.columnOrderIds, '_id'))
   }, [board])
   const lastOverId = useRef(null)
 
@@ -60,7 +60,7 @@ export default function BoardContent({ board }) {
     activeDraggingCardData
   ) => {
     setOrderedColumn(prevColumns => {
-      const overCardIndex = overColumn.cards.findIndex(
+      const overCardIndex = overColumn?.cards?.findIndex(
         card => card._id === overCardId
       )
       let newCardIndex
@@ -90,7 +90,7 @@ export default function BoardContent({ board }) {
           nextActiveColumn.cards = [generatePlaceholderCard(nextActiveColumn)]
         }
 
-        nextActiveColumn.cardOrderIds = nextActiveColumn.cards.map(
+        nextActiveColumn.cardOrderIds = nextActiveColumn?.cards?.map(
           card => card._id
         )
       }
@@ -112,7 +112,9 @@ export default function BoardContent({ board }) {
         nextOverColumn.cards = nextOverColumn.cards.filter(
           card => !card.FE_PlaceholderCard
         )
-        nextOverColumn.cardOrderIds = nextOverColumn.cards.map(card => card._id)
+        nextOverColumn.cardOrderIds = nextOverColumn.cards?.map(
+          card => card._id
+        )
       }
 
       return nextColumns
@@ -132,7 +134,7 @@ export default function BoardContent({ board }) {
   }
   const findColumnByCardId = cardId => {
     return orderedColumn.find(column =>
-      column.cards.map(card => card._id).includes(cardId)
+      column.cards?.map(card => card._id).includes(cardId)
     )
   }
 
@@ -215,7 +217,7 @@ export default function BoardContent({ board }) {
           )
           if (!targetColumn) return
           targetColumn.cards = dndOrdererCards
-          targetColumn.cardOrderIds = targetColumn.cards.map(card => card._id)
+          targetColumn.cardOrderIds = targetColumn.cards?.map(card => card._id)
           return nextColumns
         })
       }
