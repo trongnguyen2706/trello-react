@@ -10,9 +10,7 @@ export default function Board() {
 
   useEffect(() => {
     const boardId = '6809fae2bce2195a2b3212fc'
-    const columnId = '680a04f5b33f728286d182f7'
     fetchBoardDetailsAPI(boardId).then(board => {
-      console.log('test', board)
       setBoard(board)
     })
   }, [])

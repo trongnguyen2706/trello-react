@@ -6,7 +6,11 @@ import {
   SortableContext,
   horizontalListSortingStrategy
 } from '@dnd-kit/sortable'
+import { useState } from 'react'
 function ListColumn({ columns }) {
+  const [openNewColumnForm, setOpenNewColumnForm] = useState(false)
+  const toggleOpenNewColumnForm = () => setOpenNewColumnForm(!openNewColumnForm)
+
   return (
     <SortableContext
       items={columns?.map(column => column._id)}
@@ -27,28 +31,32 @@ function ListColumn({ columns }) {
             <Column key={column._id} column={column} />
           </>
         ))}
-        <Box
-          sx={{
-            minWidth: '200px',
-            maxWidth: '200px',
-            mx: 2,
-            borderRadius: '6px',
-            height: 'fit-content',
-            backgroundColor: '#ffffff3d'
-          }}
-        >
-          <Button
+        {!openNewColumnForm ? (
+          <Box
             sx={{
-              color: 'text.secondary',
-              width: '100%',
-              justifyContent: 'flex-start',
-              pl: 4
+              minWidth: '200px',
+              maxWidth: '200px',
+              mx: 2,
+              borderRadius: '6px',
+              height: 'fit-content',
+              backgroundColor: '#ffffff3d'
             }}
-            startIcon={<AddCard />}
           >
-            Add new Column
-          </Button>
-        </Box>
+            <Button
+              sx={{
+                color: 'text.secondary',
+                width: '100%',
+                justifyContent: 'flex-start',
+                pl: 4
+              }}
+              startIcon={<AddCard />}
+            >
+              Add new Column
+            </Button>
+          </Box>
+        ) : (
+          <Box>Form tao moi column</Box>
+        )}
       </Box>
     </SortableContext>
   )
